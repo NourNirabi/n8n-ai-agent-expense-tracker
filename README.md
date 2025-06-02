@@ -20,7 +20,7 @@ This n8n workflow acts as a smart financial assistant, allowing users to send th
 
 ## ⚙️ Setup
 
-1. Clone this repo and import the `workflow.json` into your [n8n](https://n8n.io/) instance.
+1. Clone this repo and import the `My_workflow.json` into your [n8n](https://n8n.io/) instance.
 
 2. Create `.env` file based on `.env.example`:
 
@@ -33,12 +33,6 @@ cp .env.example .env
 - HuggingFace token
 - Google Sheets ID and Sheet Name
 - Groq API token
-
----
-
-## 🔐 Security Notice
-
-Do **not** commit `.env` or sensitive credentials to your repo. Ensure your workflow never exposes tokens in hardcoded URLs.
 
 ---
 
