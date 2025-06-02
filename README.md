@@ -1,33 +1,56 @@
-# n8n AI Agent - Expense Tracker 💸
+# 💸 Telegram Finance Tracker Bot
 
-A smart automation using n8n and Groq LLM that logs expenses from Telegram messages (text or voice) into Google Sheets using AI Agent.
+This n8n workflow acts as a smart financial assistant, allowing users to send their expense details via **Telegram text or voice**, which are then parsed using an AI model and logged automatically into a **Google Sheets** file.
 
-## ✨ Features
-- Supports text and voice messages
-- Transcribes voice with Whisper (HuggingFace)
-- Uses Groq's LLaMA 3 to extract structured data
-- Saves output to Google Sheets
-- Fully automated and scalable
+---
 
-## 🧠 Tech Stack
-- [n8n.io](https://n8n.io/)
-- [Groq + LLaMA 3](https://groq.com/)
-- [Hugging Face Whisper ASR](https://huggingface.co/openai/whisper-large-v3)
-- [Telegram Bot API](https://core.telegram.org/bots/api)
-- Google Sheets API
+## 🧠 Features
+
+- Telegram Bot integration (text and voice)
+- Voice-to-text conversion using Whisper API from Hugging Face
+- NLP processing with LangChain or Groq
+- Smart parsing and extraction of:
+  - Date
+  - Item
+  - Amount
+  - Location
+- Auto logging into Google Sheets
+
+---
 
 ## ⚙️ Setup
-1. Import `workflow.json` into n8n
-2. Add Telegram Bot Token and Google Sheets credentials to `.env`
-3. Deploy the workflow (can be self-hosted or on n8n cloud)
 
-## 📂 Files
-- `workflow.json`: main automation logic
-- `scripts/extractDate.js`: JavaScript for parsing human dates
-- `.env.example`: environment variables you need
+1. Clone this repo and import the `workflow.json` into your [n8n](https://n8n.io/) instance.
 
-## 📸 Demo Screenshot
-![screenshot](./screenshot.png)
+2. Create `.env` file based on `.env.example`:
 
-## 📜 License
+```bash
+cp .env.example .env
+```
+
+3. Add your credentials inside `.env`:
+- Telegram bot token
+- HuggingFace token
+- Google Sheets ID and Sheet Name
+
+---
+
+## 🔐 Security Notice
+
+Do **not** commit `.env` or sensitive credentials to your repo. Ensure your workflow never exposes tokens in hardcoded URLs.
+
+---
+
+## 🛠 Tech Stack
+
+- n8n
+- Telegram Bot API
+- Hugging Face Whisper API
+- LangChain / Groq
+- Google Sheets API
+
+---
+
+## 📄 License
+
 MIT

@@ -1,0 +1,41 @@
+{
+  "name": "Telegram Finance Tracker",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "webhook/${TELEGRAM_WEBHOOK_ID}"
+      },
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger"
+    },
+    {
+      "parameters": {
+        "url": "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+      },
+      "name": "Send Message",
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "parameters": {
+        "url": "https://api-inference.huggingface.co/models/openai/whisper",
+        "authentication": "headerAuth",
+        "options": {
+          "headers": {
+            "Authorization": "Bearer ${HF_API_KEY}"
+          }
+        }
+      },
+      "name": "Whisper Audio-to-Text",
+      "type": "n8n-nodes-base.httpRequest"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "spreadsheetId": "${GOOGLE_SHEET_ID}",
+        "sheetName": "${GOOGLE_SHEET_NAME}"
+      },
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets"
+    }
+  ]
+}
