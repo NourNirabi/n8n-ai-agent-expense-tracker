@@ -32,6 +32,7 @@ cp .env.example .env
 - Telegram bot token
 - HuggingFace token
 - Google Sheets ID and Sheet Name
+- Groq API token
 
 ---
 
