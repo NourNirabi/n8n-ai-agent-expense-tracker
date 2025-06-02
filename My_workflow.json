@@ -36,6 +36,33 @@
       },
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets"
+    },
+    {
+      "parameters": {
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "headerAuth",
+        "options": {
+          "headers": {
+            "Authorization": "Bearer ${GROQ_API_KEY}",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "model": "mixtral-8x7b-32768",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You are a helpful assistant that helps users extract financial data from text."
+              },
+              {
+                "role": "user",
+                "content": "Extract the financial information from this text: ${TRANSCRIBED_TEXT}"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Groq - Parse Finance",
+      "type": "n8n-nodes-base.httpRequest"
     }
   ]
 }
